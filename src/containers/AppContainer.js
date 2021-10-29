@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { store } from '../redux/store';
-import '../style/index.css';
+import { Provider, } from 'react-redux';
+import { store, } from '../redux/store';
 
 const AppContainer = (props) => {
     const { children } = props;
