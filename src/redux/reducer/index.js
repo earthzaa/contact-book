@@ -1,7 +1,7 @@
-import formReducer from "./form";
+import user from "./user";
 
 export default function reducer() {
     return {
-        form: formReducer,
+        user,
     };
 };
