@@ -11,7 +11,7 @@ const config = {
     messagingSenderId: FIREBASE.SENDER_ID,
 };
 
-export default function useFirebase() {
+const useFirebase = () => {
     const firebase = initializeApp(config);
     const database = getFirestore();
 
@@ -20,3 +20,5 @@ export default function useFirebase() {
         database,
     ]
 };
+
+export default useFirebase;

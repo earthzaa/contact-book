@@ -3,7 +3,7 @@ import { collection, getDocs, } from 'firebase/firestore';
 import useFirebase from './useFirebase';
 import FIREBASE from '../constants/firebase';
 
-export default function useContact() {
+const useContact = () => {
     const [isLoading, setIsLoading] = React.useState(false);
     const [data, setData] = React.useState(null);
     const [, database] = useFirebase();
@@ -23,10 +23,16 @@ export default function useContact() {
         }
 
         setIsLoading(false);
-    }
+    };
+
+    const createData = async() => {
+
+    };
 
     return [
         getData,
         { isLoading, data }
     ];
 };
+
+export default useContact;
