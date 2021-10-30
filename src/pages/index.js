@@ -7,7 +7,7 @@ const IndexPage = () => {
 
     React.useEffect(() => {
         getContact();
-    }, [])
+    }, []);
 
     return (
         <AppContainer>
