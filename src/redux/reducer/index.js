@@ -1,7 +1,8 @@
-import user from "./user";
+import { combineReducers, } from 'redux';
+import contactReducer from "./contact";
 
-export default function reducer() {
-    return {
-        user,
-    };
+const rootReducer = {
+    contact: contactReducer,
 };
+
+export default combineReducers(rootReducer);

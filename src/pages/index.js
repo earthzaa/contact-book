@@ -1,14 +1,16 @@
 import React from 'react';
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector, } from 'react-redux';
 import { Edit, Delete, } from '@mui/icons-material'
 import AppContainer from '../containers/AppContainer';
 import useContact from '../util/useContact';
 import Table from '../components/Table';
-import { setUserInfo, } from '../redux/action/user';
+import { setContactInfo, } from '../redux/action/contact';
 
 const IndexPage = () => {
     const dispatch = useDispatch();
+
     const [api, { isLoading, }] = useContact();
+    const userContact = useSelector((state) => state);
     const [contacts, setContacts] = React.useState([]);
 
     const fetchContact = async () => {
@@ -22,7 +24,7 @@ const IndexPage = () => {
     };
 
     const handleEditContact = async (contact = {}) => {
-        console.log(contact);
+        dispatch(setContactInfo(contact));
     };
 
     const handleDeleteContact = async (contact = {}) => {
@@ -32,6 +34,8 @@ const IndexPage = () => {
     React.useEffect(() => {
         fetchContact();
     }, []);
+
+    console.log(userContact)
 
     return (
         <AppContainer>
