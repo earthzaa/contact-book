@@ -10,7 +10,6 @@ const IndexPage = () => {
     const dispatch = useDispatch();
 
     const [api, { isLoading, }] = useContact();
-    const userContact = useSelector((state) => state);
     const [contacts, setContacts] = React.useState([]);
 
     const fetchContact = async () => {
@@ -34,8 +33,6 @@ const IndexPage = () => {
     React.useEffect(() => {
         fetchContact();
     }, []);
-
-    console.log(userContact)
 
     return (
         <AppContainer>
