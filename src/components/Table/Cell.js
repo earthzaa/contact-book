@@ -8,6 +8,7 @@ const Cell = (props) => {
             className={props.className}
             key={props.key}
             colSpan={props.colSpan}
+            onClick={props.onClick}
         >
             {props.children}
         </TableCell>
@@ -19,6 +20,7 @@ Cell.propTypes = {
     children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     key: PropTypes.string,
     colSpan: PropTypes.number,
+    onClick: PropTypes.func,
 };
 
 Cell.defaultProps = {
@@ -26,6 +28,7 @@ Cell.defaultProps = {
     children: '',
     key: '',
     colSpan: 1,
+    onClick: () => { },
 };
 
 export default Cell;

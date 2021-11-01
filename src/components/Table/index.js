@@ -28,6 +28,7 @@ const CustomTable = (props) => {
                     isLoading={props.isLoading}
                     queries={props.queries}
                     actionMenu={props.actionMenu}
+                    onClickRow={props.onClickBody}
                 />
             </Table>
         </TableContainer>
@@ -45,6 +46,7 @@ CustomTable.propTypes = {
         text: PropTypes.string,
         func: PropTypes.func,
     })),
+    onClickBody: PropTypes.func,
 };
 
 CustomTable.defaultProps = {
@@ -54,6 +56,7 @@ CustomTable.defaultProps = {
     isLoading: false,
     onCreate: () => { },
     actionMenu: [],
+    onClickBody: () => { },
 };
 
 export default CustomTable;

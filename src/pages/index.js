@@ -18,12 +18,17 @@ const IndexPage = () => {
         setContacts(data);
     };
 
+    const goToFormPage = () => {
+        window.location.href = '/form';
+    }
+
     const handleCreateContact = async () => {
-        window.location.href = '/create';
+        goToFormPage();
     };
 
     const handleEditContact = async (contact = {}) => {
         dispatch(setContactInfo(contact));
+        goToFormPage();
     };
 
     const handleDeleteContact = async (contact = {}) => {
@@ -37,7 +42,7 @@ const IndexPage = () => {
     return (
         <AppContainer page>
             <Table
-                headers={['id', 'name', 'email', 'contact', 'action']}
+                headers={['id', 'name', 'email', 'contact', '']}
                 queries={['id', 'name', 'email', 'contact']}
                 actionMenu={[
                     { icon: <Edit fontSize="8px" />, text: 'edit', func: handleEditContact, },
@@ -46,6 +51,7 @@ const IndexPage = () => {
                 data={contacts}
                 isLoading={isLoading}
                 onCreate={handleCreateContact}
+                onClickBody={handleEditContact}
             />
         </AppContainer>
     );

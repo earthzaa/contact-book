@@ -1,10 +1,15 @@
+:root {
+    --bg-main-color: #f5f5f5;
+}
+
 body {
     margin: 0;
+    cursor: default;
 }
 
 #root {
     margin: 0;
-    background-color: #f5f5f5;
+    background-color: var(--bg-main-color);
     min-height: 100vh;
 }
 
@@ -18,4 +23,14 @@ body {
 
 .page-not-found > .icon-sad {
     font-size: 120px;
+}
+
+td {
+    transition: all 0.25s ease-in-out;
+}
+
+tr:hover > td:not(:last-child) {
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--bg-main-color);
 }

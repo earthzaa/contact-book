@@ -6,14 +6,14 @@ import {
 } from 'react-router-dom';
 import IndexPage from './index';
 import PageNotFound from './404';
-import CreateContactPage from './create';
+import FormContactPage from './form';
 
 const App = () => {
     return (
         <Router>
             <Switch>
                 <Route path="/" component={IndexPage} exact />
-                <Route path="/create" component={CreateContactPage} exact />
+                <Route path="/form" component={FormContactPage} exact />
                 <Route path="*" component={PageNotFound} />
             </Switch>
         </Router>

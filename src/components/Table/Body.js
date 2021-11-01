@@ -1,20 +1,14 @@
 import React from 'react';
-import { TableBody, } from '@mui/material';
+import { TableBody, CircularProgress, Typography, } from '@mui/material';
 import PropTypes from 'prop-types';
 import Row from './Row';
 import Cell from './Cell';
 import ActionMenu from './ActionMenu';
 
 const Body = (props) => {
-    const RenderQuery = (data = {}) => {
-        return props.queries.map((query, index) => (
-            <Cell
-                key={`${query}-${index}`}
-            >
-                {data[query]}
-            </Cell>
-        ));
-    };
+    const RenderQuery = (data = {}) => props.queries.map((query, index) => (
+        <Cell key={`${query}-${index}`} onClick={props.onClickRow}>{data[query]}</Cell>
+    ));
 
     const RenderCell = (index = 0) => {
         return (
@@ -41,14 +35,20 @@ const Body = (props) => {
         if (props.isLoading) {
             return (
                 <Row>
-                    <Cell colSpan={4}>Loading ...</Cell>
+                    <Cell className="text-center" colSpan={5}>
+                        <CircularProgress />
+                        <br />
+                        <Typography color="primary" variant="caption">Loading ...</Typography>
+                    </Cell>
                 </Row>
             );
         }
         else if (props.data.length === 0) {
             return (
                 <Row>
-                    <Cell colSpan={4}>No data</Cell>
+                    <Cell className="text-center" colSpan={5}>
+                        <Typography color="inherit" variant="subtitle2">No data</Typography>
+                    </Cell>
                 </Row>
             )
         }
@@ -73,6 +73,7 @@ Body.propTypes = {
         text: PropTypes.string,
         func: PropTypes.func,
     })),
+    onClickRow: PropTypes.func,
 };
 
 Body.defaultProps = {
@@ -80,6 +81,7 @@ Body.defaultProps = {
     data: [],
     isLoading: false,
     actionMenu: [],
+    onClickRow: () => { },
 };
 
 export default Body;
