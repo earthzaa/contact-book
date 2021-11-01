@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector, } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { Edit, Delete, } from '@mui/icons-material'
 import AppContainer from '../containers/AppContainer';
 import useContact from '../util/useContact';
@@ -19,7 +19,7 @@ const IndexPage = () => {
     };
 
     const handleCreateContact = async () => {
-
+        window.location.href = '/create';
     };
 
     const handleEditContact = async (contact = {}) => {
@@ -35,7 +35,7 @@ const IndexPage = () => {
     }, []);
 
     return (
-        <AppContainer>
+        <AppContainer page>
             <Table
                 headers={['id', 'name', 'email', 'contact', 'action']}
                 queries={['id', 'name', 'email', 'contact']}

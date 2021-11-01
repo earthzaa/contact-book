@@ -1,4 +1,21 @@
-#root {
+body {
     margin: 0;
 }
 
+#root {
+    margin: 0;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.page-not-found {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page-not-found > .icon-sad {
+    font-size: 120px;
+}

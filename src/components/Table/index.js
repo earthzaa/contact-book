@@ -14,7 +14,9 @@ const CustomTable = (props) => {
     return (
         <TableContainer>
             <div className="d-flex align-items-center justify-content-between">
-                <Typography variant="h3">Contact People</Typography>
+                <Typography color="primary" variant="h3" fontWeight="700">
+                    Contact People
+                </Typography>
                 <IconButton onClick={props.onCreate}>
                     <AddCircle />
                 </IconButton>
