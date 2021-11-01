@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
+import {
     doc,
-    collection, 
-    getDocs, 
+    collection,
+    getDocs,
     addDoc,
     updateDoc,
     deleteDoc,
@@ -15,11 +15,9 @@ const useContact = () => {
     const [data, setData] = React.useState(null);
     const [, database] = useFirebase();
 
-    const toggleLoading = () => setIsLoading(!isLoading);
-
     const getData = async () => {
         try {
-            toggleLoading();
+            setIsLoading(true);
 
             let docs = [];
             const ref = collection(database, FIREBASE.COLLECTION.USERS);
@@ -28,72 +26,74 @@ const useContact = () => {
             query.forEach((doc) => docs.push({ ...doc.data(), id: doc.id, }));
             setData(docs);
 
-            toggleLoading();
+            setIsLoading(false);
 
             return docs;
         }
         catch (error) {
             console.log('get contact data ->', error);
-            toggleLoading();
+            setIsLoading(false);
         }
     };
 
-    const createData = async(contactInfo = {}) => {
+    const createData = async (contactInfo = {}) => {
         try {
-            toggleLoading();
+            setIsLoading(true);
 
             const ref = collection(database, FIREBASE.COLLECTION.USERS);
             const docData = await addDoc(ref, contactInfo);
 
-            toggleLoading();
+            setIsLoading(false);
 
             return docData;
         }
-        catch(error) {
+        catch (error) {
             console.log('create contact data ->', error);
-            toggleLoading();
+            setIsLoading(false);
         }
     };
 
-    const updateData = async(id = '', contactInfo) => {
+    const updateData = async (id = '', contactInfo) => {
         try {
-            toggleLoading();
+            setIsLoading(true);
 
-            const ref = doc(database, FIREBASE.COLLECTION.USERS, id); 
+            const ref = doc(database, FIREBASE.COLLECTION.USERS, id);
             const docData = await updateDoc(ref, contactInfo);
 
-            toggleLoading();
+            setIsLoading(false);
 
             return docData;
         }
-        catch(error) {
+        catch (error) {
             console.log('update contact data ->', error);
-            toggleLoading();
+            setIsLoading(false);
         }
     };
 
-    const deleteData = async(id = '') => {
+    const deleteData = async (id = '') => {
         try {
-            toggleLoading();
+            setIsLoading(true);
 
-            const ref = doc(database, FIREBASE.COLLECTION.USERS, id); 
+            const ref = doc(database, FIREBASE.COLLECTION.USERS, id);
             const docData = await deleteDoc(ref);
 
-            toggleLoading();
-            
+            setIsLoading(false);
+
             return docData;
         }
-        catch(error) {
+        catch (error) {
             console.log('delete contact data ->', error);
-            toggleLoading();
+            setIsLoading(false);
         }
     };
 
     return [
-        getData,
-        createData,
-        updateData,
-        deleteData,
+        {
+            getData,
+            createData,
+            updateData,
+            deleteData,
+        },
         { isLoading, data },
     ];
 };

@@ -6,6 +6,6 @@ export default {
     STORAGE_BUCKET: process.env.REACT_APP_STORAGE_BUCKET,
     SENDER_ID: process.env.REACT_APP_SENDER_ID,
     COLLECTION: {
-        USERS: 'user',
+        USERS: 'users',
     },
 };
