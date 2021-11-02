@@ -6,7 +6,7 @@ import { INPUTS, GENDER, } from '../../constants/form';
 const ContactCard = (props) => {
     const getGenderLabel = (type = '', value = '') => {
         if (!value) return '';
-        else if (type === 'gender') return GENDER[type];
+        else if (type === 'gender') return GENDER[value]?.label;
         else return value;
     };
 
