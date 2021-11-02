@@ -1,21 +1,35 @@
 import React from 'react';
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector, } from 'react-redux';
 import { Edit, Delete, Visibility, } from '@mui/icons-material'
 import AppContainer from '../containers/AppContainer';
 import useContact from '../util/useContact';
 import Table from '../components/Table';
+import DialogConfirm from '../components/DialogConfirm';
 import { setContactInfo, clearContactInfo, } from '../redux/action/contact';
 
 const IndexPage = () => {
     const dispatch = useDispatch();
 
+    const contactInfo = useSelector((state) => state.contact);
+
     const [api, { isLoading }] = useContact();
     const [contacts, setContacts] = React.useState([]);
+    const [isOpenDialog, setIsOpenDialog] = React.useState(false);
 
     const fetchContact = async () => {
         const data = await api.getData();
 
         setContacts(data);
+    };
+
+    const handleClickDeleteContact = (contact = {}) => {
+        dispatch(setContactInfo(contact));
+        setIsOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setIsOpenDialog(false);
+        dispatch(clearContactInfo());
     };
 
     const goToFormPage = () => {
@@ -41,12 +55,13 @@ const IndexPage = () => {
         goToFormPage();
     };
 
-    const handleDeleteContact = async (contact = {}) => {
+    const handleDeleteContact = async () => {
         try {
-            const { id } = contact;
+            const { id } = contactInfo;
 
             await api.deleteData(id);
             await fetchContact();
+            handleCloseDialog();
         }
         catch (error) {
             console.log('delete contact ->', error);
@@ -59,13 +74,21 @@ const IndexPage = () => {
 
     return (
         <AppContainer page>
+            <DialogConfirm
+                isOpen={isOpenDialog}
+                onClose={handleCloseDialog}
+                onDecline={handleCloseDialog}
+                onAccept={handleDeleteContact}
+                title="Do you want to delete contact ?"
+                contentText={`Contact "${contactInfo.id} (${contactInfo.name} )" will lost forever.`}
+            />
             <Table
                 headers={['id', 'name', 'email', 'contact', 'action']}
                 queries={['id', 'name', 'email', 'contactNo']}
                 actionMenu={[
                     { icon: <Visibility fontSize="8px" />, text: 'view', onClick: handleViewContact, },
                     { icon: <Edit fontSize="8px" />, text: 'edit', onClick: handleEditContact, },
-                    { icon: <Delete fontSize="8px" />, text: 'delete', onClick: handleDeleteContact, }
+                    { icon: <Delete fontSize="8px" />, text: 'delete', onClick: handleClickDeleteContact, }
                 ]}
                 data={contacts}
                 isLoading={isLoading}
