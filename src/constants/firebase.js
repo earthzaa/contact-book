@@ -1,4 +1,4 @@
-export default {
+export const FIREBASE_ENV = {
     API_KEY: process.env.REACT_APP_API_KEY,
     DOMAIN: process.env.REACT_APP_DOMAIN,
     DATABASE_URL: process.env.REACT_APP_DATABASE_URL,
@@ -8,4 +8,13 @@ export default {
     COLLECTION: {
         USERS: 'users',
     },
+};
+
+export const FIREBASE_CONFIG = {
+    apiKey: FIREBASE_ENV.API_KEY,
+    authDomain: FIREBASE_ENV.DOMAIN,
+    databaseURL: FIREBASE_ENV.DATABASE_URL,
+    projectId: FIREBASE_ENV.PROJECT_ID,
+    storageBucket: FIREBASE_ENV.STORAGE_BUCKET,
+    messagingSenderId: FIREBASE_ENV.SENDER_ID,
 };

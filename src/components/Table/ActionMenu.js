@@ -26,7 +26,7 @@ const ActionMenu = (props) => {
         return props.menu.map((item, index) => (
             <MenuItem
                 key={`${item.text}-${index}`}
-                onClick={() => handleClickMenuItem(item.func)}
+                onClick={() => handleClickMenuItem(item.onClick)}
             >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText>{item.text}</ListItemText>
@@ -56,7 +56,7 @@ ActionMenu.propTypes = {
     menu: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.node,
         text: PropTypes.string,
-        func: PropTypes.func,
+        onClick: PropTypes.func,
     })),
 };
 

@@ -34,3 +34,78 @@ tr:hover > td {
     transition: all 0.25s ease-in-out;
     background-color: var(--bg-main-color);
 }
+
+.image-upload-container {
+    position: relative;
+    text-align: center;
+}
+
+.image-upload-container > .image-upload-src {
+    opacity: 1;
+    object-fit: cover;
+    transition: all 0.4s ease-in-out;
+}
+
+.image-upload-container:hover > .image-upload-src, .blur-on-loading {
+    cursor: pointer;
+    opacity: 0.75;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    transition: all 0.4s ease-in-out;
+}
+
+.image-upload-container > .image-upload-text {
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.image-upload-container:hover > .image-upload-text {
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+}
+
+.contact-profile-img {
+    margin-right: 2em;
+}
+
+.contact-profile-img > .image-upload-src {
+    border-radius: 50%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+.contact-info-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+
+.contact-info-container > div {
+    padding: 1.5em 2em;
+}
+
+.contact-info {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    z-index: 2;
+    top: -50px;
+    padding: 0.5em;
+}
+
+.hide {
+    position: absolute;
+    height: 0;
+    width: 0;
+    padding: 0;
+    border: none;
+}

@@ -44,7 +44,7 @@ CustomTable.propTypes = {
     actionMenu: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.node,
         text: PropTypes.string,
-        func: PropTypes.func,
+        onClick: PropTypes.func,
     })),
     onClickBody: PropTypes.func,
 };

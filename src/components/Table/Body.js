@@ -6,30 +6,27 @@ import Cell from './Cell';
 import ActionMenu from './ActionMenu';
 
 const Body = (props) => {
-    const RenderQuery = (data = {}) => props.queries.map((query, index) => (
-        <Cell key={`${query}-${index}`} onClick={props.onClickRow}>{data[query]}</Cell>
+    const RenderQuery = (query = {}, index = 0, item = {}) => (
+        <Cell
+            key={`${item[query]}-${query}-${index}`}
+            onClick={() => props.onClickRow && props.onClickRow(item)}
+        >
+            {item[query]}
+        </Cell>
+    );
+
+    const RenderCell = (item = {}, index = 0) => (
+        <React.Fragment key={`${item?.id || ''}-${index}`}>
+            {props.queries.map((query, queryIndex) => RenderQuery(query, queryIndex, item))}
+            <Cell>
+                <ActionMenu data={item} menu={props.actionMenu} />
+            </Cell>
+        </React.Fragment>
+    );
+
+    const RenderRow = (list = []) => list.map((item, index) => (
+        <Row key={`${item}-${index}`}>{RenderCell(item, index)}</Row>
     ));
-
-    const RenderCell = (index = 0) => {
-        return (
-            <React.Fragment>
-                {props.data.map((data) => RenderQuery(data))}
-                <Cell>
-                    <ActionMenu data={props.data[index]} menu={props.actionMenu} />
-                </Cell>
-            </React.Fragment>
-        );
-    };
-
-    const RenderRow = (rows = []) => {
-        return rows.map((row, index) => (
-            <Row
-                key={`${row}-${index}`}
-            >
-                {RenderCell(index)}
-            </Row>
-        ));
-    };
 
     const RenderBody = () => {
         if (props.isLoading) {
@@ -43,7 +40,7 @@ const Body = (props) => {
                 </Row>
             );
         }
-        else if (props.data.length === 0) {
+        else if (!props.data?.length) {
             return (
                 <Row>
                     <Cell className="text-center" colSpan={5}>
