@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     contactNo: '',
     bgPic: '',
     gender: '',
-    bio: '',
+    address: '',
 };
 
 const contactReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -24,7 +24,7 @@ const contactReducer = (state = INITIAL_STATE, { type, payload }) => {
                 email: payload.email || '',
                 contactNo: payload.contactNo || '',
                 bgPic: payload.bgPic || '',
-                bio: payload.bio || '',
+                address: payload.address || '',
                 gender: payload.gender || '',
             };
 

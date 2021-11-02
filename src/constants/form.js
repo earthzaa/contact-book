@@ -1,7 +1,13 @@
+export const GENDER = {
+    MALE: { value: 'MALE', label: 'Male', },
+    FEMALE: { value: 'FEMALE', label: 'Female', },
+    NOT_SPECIFIC: { value: 'NOT_SPECIFIC', label: 'Not Specific', },
+};
+
 export const GENDER_OPTIONS = [
-    { value: 'MALE', label: 'Male', },
-    { value: 'FEMALE', label: 'Female', },
-    { value: 'NOT_SPECIFIC', label: 'Not Specific', },
+    GENDER.MALE,
+    GENDER.FEMALE,
+    GENDER.NOT_SPECIFIC,
 ];
 
 export const INPUTS = [

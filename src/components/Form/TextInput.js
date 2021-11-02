@@ -13,13 +13,14 @@ const TextInput = (props) => {
                 onChange={props.onChange}
                 label={props.label}
                 helperText={props.helpText}
-                variant="filled"
+                variant={props.variant}
                 inputProps={{
                     maxLength: props.maxLength,
                 }}
                 rows={4}
                 error={props.require && props.isError}
                 placeholder={props.placeholder}
+                disabled={props.disabled}
                 multiline
                 fullWidth
             />
@@ -35,12 +36,13 @@ const TextInput = (props) => {
                 onChange={props.onChange}
                 label={props.label}
                 helperText={props.helpText}
-                variant="filled"
+                variant={props.variant}
                 inputProps={{
                     maxLength: props.maxLength,
                 }}
                 placeholder={props.placeholder}
                 error={props.require && props.isError}
+                disabled={props.disabled}
                 fullWidth
             />
         );
@@ -59,6 +61,8 @@ TextInput.propTypes = {
     maxLength: PropTypes.number,
     placeholder: PropTypes.string,
     require: PropTypes.bool,
+    disabled: PropTypes.bool,
+    variant: PropTypes.oneOf(['filled', 'outlined', 'standard']),
 };
 
 TextInput.defaultProps = {
@@ -69,10 +73,12 @@ TextInput.defaultProps = {
     isError: false,
     onChange: () => { },
     label: 'input',
-    helpText: 'text',
+    helpText: '',
     maxLength: 50,
     placeholder: 'typing...',
     require: false,
+    disabled: false,
+    variant: 'filled',
 };
 
 export default TextInput;
