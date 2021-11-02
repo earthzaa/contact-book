@@ -14,7 +14,6 @@ const TextInput = (props) => {
                 label={props.label}
                 helperText={props.helpText}
                 variant="filled"
-                placeholder="typing..."
                 inputProps={{
                     maxLength: props.maxLength,
                 }}

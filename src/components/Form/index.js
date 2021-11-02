@@ -21,20 +21,20 @@ const CustomForm = (props) => {
         if (type === 'email') isError = !EMAIL.test(value);
         else isError = !Boolean(value);
 
-        setFormError({
-            ...formError,
+        setFormError((prevState) => ({
+            ...prevState,
             [name]: isError,
-        });
+        }));
     };
 
     const handleChangeInput = (event = {}) => {
         const { name, value, type, } = event.target;
 
         handleErrorForm(name, value, type);
-        setForm({
-            ...form,
+        setForm((prevState) => ({
+            ...prevState,
             [name]: value,
-        });
+        }));
     };
 
     const handleSubmit = () => props.onSubmit(form);
@@ -43,7 +43,7 @@ const CustomForm = (props) => {
         const keys = Object.keys(formError);
         const inputsRequire = props.inputs.filter((input) => input.require);
         const inputsValid = keys.filter((key) =>
-            inputsRequire.filter((input) => key === input.name && !formError[key])
+            inputsRequire.find((input) => key === input.name && !formError[key])
         );
         const isValidToAction = inputsValid.length === inputsRequire.length;
 
@@ -51,8 +51,12 @@ const CustomForm = (props) => {
     };
 
     React.useEffect(() => {
-        if (props.disabledSubmit !== disabledAction) setDisabledAction(props.disabledSubmit);
-    }, [props.disabledSubmit]);
+        props.inputs.forEach((input) => {
+            const { name, type, } = input;
+
+            handleErrorForm(name, props.initData[name], type);
+        });
+    }, []);
 
     React.useEffect(() => {
         validateFormToSubmit();
