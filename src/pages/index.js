@@ -33,12 +33,19 @@ const IndexPage = () => {
 
     const handleEditContact = async (contact = {}) => {
         dispatch(setContactInfo(contact));
-        console.log('index', contact);
         goToFormPage();
     };
 
     const handleDeleteContact = async (contact = {}) => {
+        try {
+            const { id } = contact;
 
+            await api.deleteData(id);
+            await fetchContact();
+        }
+        catch (error) {
+            console.log('delete contact ->', error);
+        }
     };
 
     React.useEffect(() => {
