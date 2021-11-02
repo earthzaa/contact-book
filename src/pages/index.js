@@ -22,8 +22,13 @@ const IndexPage = () => {
         setTimeout(() => window.location.href = '/form', 500);
     };
 
+    const goToViewPage = () => {
+        setTimeout(() => window.location.href = '/view', 500);
+    };
+
     const handleViewContact = (contact = {}) => {
         dispatch(setContactInfo(contact));
+        goToViewPage();
     };
 
     const handleCreateContact = async () => {

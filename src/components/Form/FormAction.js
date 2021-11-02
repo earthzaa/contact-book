@@ -25,14 +25,17 @@ const FormAction = (props) => {
                 >
                     {props.cancelText}
                 </Button>
-                <Button
-                    color="primary"
-                    variant="outlined"
-                    onClick={props.onSubmit}
-                    disabled={props.disabled || props.isLoading}
-                >
-                    {props.submitText}
-                </Button>
+                {
+                    !props.view &&
+                    <Button
+                        color="primary"
+                        variant="outlined"
+                        onClick={props.onSubmit}
+                        disabled={props.disabled || props.isLoading}
+                    >
+                        {props.submitText}
+                    </Button>
+                }
             </ButtonGroup>
         </div>
     );
@@ -46,6 +49,7 @@ FormAction.propTypes = {
     onCancel: PropTypes.func,
     disabled: PropTypes.bool,
     isLoading: PropTypes.bool,
+    view: PropTypes.bool,
 };
 
 FormAction.defaultProps = {
@@ -56,6 +60,7 @@ FormAction.defaultProps = {
     onCancel: () => { },
     disabled: false,
     isLoading: false,
+    view: false,
 };
 
 export default FormAction;

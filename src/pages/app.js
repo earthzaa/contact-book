@@ -7,6 +7,7 @@ import {
 import IndexPage from './index';
 import PageNotFound from './404';
 import FormContactPage from './form';
+import ViewPage from './view';
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
             <Switch>
                 <Route path="/" component={IndexPage} exact />
                 <Route path="/form" component={FormContactPage} exact />
+                <Route path="/view" component={ViewPage} exact />
                 <Route path="*" component={PageNotFound} />
             </Switch>
         </Router>
