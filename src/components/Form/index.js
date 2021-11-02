@@ -94,7 +94,7 @@ const CustomForm = (props) => {
                 id="input-upload-profile-bg"
                 className="border rounded"
                 label={bgPic.label}
-                src={bgPic.value}
+                src={form[bgPic.name]}
                 height="300px"
                 width="100%"
                 name={bgPic.name}
@@ -106,7 +106,7 @@ const CustomForm = (props) => {
                         id="input-upload-profile-img"
                         className="contact-profile-img"
                         label={profilePic.label}
-                        src={profilePic.value}
+                        src={form[profilePic.name]}
                         height="300px"
                         width="300px"
                         name={profilePic.name}
