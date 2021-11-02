@@ -29,7 +29,7 @@ const ImageUpload = (props) => {
 
     React.useEffect(() => {
         if (props.src) setImageUrl(props.src);
-    }, [props.src])
+    }, [props.src]);
 
     return (
         <div

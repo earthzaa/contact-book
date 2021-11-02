@@ -14,7 +14,9 @@ const CustomForm = (props) => {
     const [formError, setFormError] = React.useState({});
 
     const handleChangeInput = (event) => {
-        const { name, value, } = event.target;
+        const { name, value, type, } = event.target;
+
+        console.log(name, type);
 
         setForm({
             ...form,
