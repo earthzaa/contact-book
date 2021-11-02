@@ -19,6 +19,7 @@ const TextInput = (props) => {
                     maxLength: props.maxLength,
                 }}
                 rows={4}
+                error={props.require && props.isError}
                 placeholder={props.placeholder}
                 multiline
                 fullWidth
@@ -40,6 +41,7 @@ const TextInput = (props) => {
                     maxLength: props.maxLength,
                 }}
                 placeholder={props.placeholder}
+                error={props.require && props.isError}
                 fullWidth
             />
         );
@@ -57,6 +59,7 @@ TextInput.propTypes = {
     helpText: PropTypes.string,
     maxLength: PropTypes.number,
     placeholder: PropTypes.string,
+    require: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -69,7 +72,8 @@ TextInput.defaultProps = {
     label: 'input',
     helpText: 'text',
     maxLength: 50,
-    placeholder: 'typing...'
+    placeholder: 'typing...',
+    require: false,
 };
 
 export default TextInput;

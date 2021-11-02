@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import ImageUpload from './ImageUpload';
 import FormAction from './FormAction';
+import { EMAIL, } from '../../constants/regex';
 
 const CustomForm = (props) => {
     const bgPic = props.inputs[0];
@@ -12,12 +13,24 @@ const CustomForm = (props) => {
 
     const [form, setForm] = React.useState(props.initData);
     const [formError, setFormError] = React.useState({});
+    const [disabledAction, setDisabledAction] = React.useState(props.disabled);
 
-    const handleChangeInput = (event) => {
+    const handleErrorForm = (name = '', value = '', type = 'text') => {
+        let isError = false;
+
+        if (type === 'email') isError = !EMAIL.test(value);
+        else isError = !Boolean(value);
+
+        setFormError({
+            ...formError,
+            [name]: isError,
+        });
+    };
+
+    const handleChangeInput = (event = {}) => {
         const { name, value, type, } = event.target;
 
-        console.log(name, type);
-
+        handleErrorForm(name, value, type);
         setForm({
             ...form,
             [name]: value,
@@ -25,6 +38,25 @@ const CustomForm = (props) => {
     };
 
     const handleSubmit = () => props.onSubmit(form);
+
+    const validateFormToSubmit = () => {
+        const keys = Object.keys(formError);
+        const inputsRequire = props.inputs.filter((input) => input.require);
+        const inputsValid = keys.filter((key) =>
+            inputsRequire.filter((input) => key === input.name && !formError[key])
+        );
+        const isValidToAction = inputsValid.length === inputsRequire.length;
+
+        setDisabledAction(!isValidToAction);
+    };
+
+    React.useEffect(() => {
+        if (props.disabledSubmit !== disabledAction) setDisabledAction(props.disabledSubmit);
+    }, [props.disabledSubmit]);
+
+    React.useEffect(() => {
+        validateFormToSubmit();
+    }, [formError]);
 
     const RenderInput = (input, index) => (
         <TextInput
@@ -35,10 +67,11 @@ const CustomForm = (props) => {
             value={form[input.name]}
             onChange={handleChangeInput}
             label={input.label}
-            isError={formError[input.name] || false}
+            isError={Boolean(formError[input.name])}
             helpText={input.helpText}
             maxLength={input.maxLength}
             placeholder={input.placeholder}
+            require={input.require}
         />
     );
 
@@ -50,7 +83,8 @@ const CustomForm = (props) => {
                 cancelText={props.cancelText}
                 onSubmit={handleSubmit}
                 onCancel={props.onCancel}
-                disabled={props.disabled}
+                disabled={disabledAction}
+                isLoading={props.isLoading}
             />
             <ImageUpload
                 id="input-upload-profile-bg"
@@ -86,10 +120,11 @@ CustomForm.propTypes = {
     initData: PropTypes.object,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
-    disabled: PropTypes.bool,
+    disabledSubmit: PropTypes.bool,
     submitText: PropTypes.string,
     cancelText: PropTypes.string,
     title: PropTypes.string,
+    isLoading: PropTypes.bool,
 };
 
 CustomForm.defaultProps = {
@@ -97,10 +132,11 @@ CustomForm.defaultProps = {
     initData: {},
     onSubmit: () => { },
     onCancel: () => { },
-    disabled: false,
+    disabledSubmit: false,
     submitText: 'Submit',
     cancelText: 'Cancel',
     title: 'Title',
+    isLoading: false,
 };
 
 export default CustomForm;

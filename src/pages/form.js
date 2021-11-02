@@ -30,7 +30,7 @@ const FormContactPage = () => {
                 email: formContact.email || '',
                 contactNo: formContact.contactNo || '',
                 gender: formContact.gender || '',
-                bio: formContact.bio || '',
+                address: formContact.address || '',
             };
 
             if (isCreate) await createData(submitForm);
@@ -53,7 +53,8 @@ const FormContactPage = () => {
                 cancelText="Back"
                 onSubmit={handleSubmitContact}
                 onCancel={goToIndexPage}
-                disabled={isLoading}
+                disabledSubmit={isCreate}
+                isLoading={isLoading}
             />
         </AppContainer>
     );

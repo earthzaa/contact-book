@@ -10,12 +10,14 @@ export const INPUTS = [
         name: 'bgPic',
         type: 'file',
         helpText: '800x200 px',
+        require: false,
     },
     {
         label: 'Contact Picture',
         name: 'profilePic',
         type: 'file',
         helpText: '90x90 px',
+        require: false,
     },
     {
         label: 'Name *',
@@ -24,6 +26,7 @@ export const INPUTS = [
         helpText: 'require',
         placeholder: 'eg. John Wick',
         maxLength: 50,
+        require: true,
     },
     {
         label: 'Email *',
@@ -32,6 +35,7 @@ export const INPUTS = [
         helpText: 'require',
         placeholder: 'eg. info@mail.org',
         maxLength: 50,
+        require: true,
     },
     {
         label: 'Contact Number *',
@@ -40,6 +44,7 @@ export const INPUTS = [
         placeholder: 'eg. 000-000-000',
         helpText: 'require',
         maxLength: 20,
+        require: true,
     },
     {
         label: 'Gender',
@@ -47,6 +52,7 @@ export const INPUTS = [
         type: 'select',
         helpText: 'select only',
         options: GENDER_OPTIONS,
+        require: false,
     },
     {
         label: 'Address',
@@ -55,5 +61,6 @@ export const INPUTS = [
         placeholder: 'eg. 000 baker street',
         helpText: 'text only',
         maxLength: 275,
+        require: false,
     }
 ];
