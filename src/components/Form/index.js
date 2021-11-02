@@ -76,6 +76,7 @@ const CustomForm = (props) => {
             maxLength={input.maxLength}
             placeholder={input.placeholder}
             require={input.require}
+            options={input.options || []}
         />
     );
 

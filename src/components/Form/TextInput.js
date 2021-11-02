@@ -1,8 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField, } from '@mui/material';
+import {
+    TextField,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
+} from '@mui/material';
 
 const TextInput = (props) => {
+    if (props.type === 'select') {
+        return (
+            <FormControl className={`${props.className} mt-1 mb-4`} fullWidth>
+                <InputLabel>{props.label}</InputLabel>
+                <Select
+                    name={props.name}
+                    onChange={props.onChange}
+                    value={props.value}
+                    variant={props.variant}
+                >
+                    {
+                        props.options.map((option, index) => (
+                            <MenuItem
+                                key={`${option.value}-${index}`}
+                                value={option.value}
+                            >
+                                {option.label}
+                            </MenuItem>
+                        ))
+                    }
+                </Select>
+            </FormControl>
+        )
+    }
+
     if (props.type === 'textarea') {
         return (
             <TextField
@@ -63,6 +94,10 @@ TextInput.propTypes = {
     require: PropTypes.bool,
     disabled: PropTypes.bool,
     variant: PropTypes.oneOf(['filled', 'outlined', 'standard']),
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+    }))
 };
 
 TextInput.defaultProps = {
@@ -79,6 +114,7 @@ TextInput.defaultProps = {
     require: false,
     disabled: false,
     variant: 'filled',
+    options: [],
 };
 
 export default TextInput;
