@@ -43,6 +43,7 @@ const ImageUpload = (props) => {
                 type="file"
                 onChange={handleUploadImage}
                 accept="image/*"
+                disabled={props.disabled}
             />
             <img
                 className={`image-upload-src ${isLoading ? 'blur-on-loading' : ''}`}
@@ -78,6 +79,7 @@ ImageUpload.propTypes = {
     height: PropTypes.string,
     onChange: PropTypes.func,
     name: PropTypes.string,
+    disabled: PropTypes.bool,
 };
 
 ImageUpload.defaultProps = {
@@ -89,6 +91,7 @@ ImageUpload.defaultProps = {
     height: '200px',
     onChange: () => { },
     name: '',
+    disabled: false,
 };
 
 export default ImageUpload;
