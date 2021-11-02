@@ -18,6 +18,7 @@ const ContactCard = (props) => {
                 label={input.label.split('*')[0]}
                 value={getGenderLabel(input.name, props[input.name])}
                 variant="standard"
+                type={input.name === 'address' ? 'textarea' : 'text'}
                 disabled
             />
         )
