@@ -6,14 +6,14 @@ export const GENDER_OPTIONS = [
 
 export const INPUTS = [
     {
-        label: 'Background Picture',
+        label: 'Upload Background',
         name: 'bgPic',
         type: 'file',
         helpText: '800x200 px',
         require: false,
     },
     {
-        label: 'Contact Picture',
+        label: 'Upload Picture',
         name: 'profilePic',
         type: 'file',
         helpText: '90x90 px',
