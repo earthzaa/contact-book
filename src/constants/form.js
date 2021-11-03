@@ -46,7 +46,7 @@ export const INPUTS = [
     {
         label: 'Contact Number *',
         name: 'contactNo',
-        type: 'text',
+        type: 'tel',
         placeholder: 'e.g. 000-000-000',
         helpText: '*require this field',
         autoCapitalize: 'characters',

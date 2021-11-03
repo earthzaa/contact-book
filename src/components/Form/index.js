@@ -31,7 +31,7 @@ const CustomForm = (props) => {
         const { name, type, } = event.target;
         let { value, } = event.target;
 
-        if (name === 'contactNo') value = value.toUpperCase();
+        if (type === 'tel') value = value.toUpperCase();
 
         handleErrorForm(name, value, type);
         setForm((prevState) => ({
