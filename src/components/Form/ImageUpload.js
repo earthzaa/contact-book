@@ -52,6 +52,7 @@ const ImageUpload = (props) => {
                     width: props.width,
                     height: props.height,
                 }}
+                onError={(e) => e.target.src = 'image-not-found.png'}
                 alt="src-not-found"
             />
             <Typography
