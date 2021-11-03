@@ -89,7 +89,7 @@ const IndexPage = () => {
                 contentText={`Contact's name "${contactInfo.name}" will be lost forever.`}
             />
             <Table
-                headers={['id', 'name', 'email', 'contact', 'action']}
+                headers={['ID', 'Name', 'Email', 'Contact', 'Action']}
                 queries={['id', 'name', 'email', 'contactNo']}
                 actionMenu={[
                     { icon: <Visibility fontSize="8px" />, text: 'view', onClick: handleViewContact, },
