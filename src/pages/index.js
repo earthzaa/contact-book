@@ -61,13 +61,13 @@ const IndexPage = () => {
             const { id } = contactInfo;
 
             await api.deleteData(id);
+            handleCloseDialog();
             dispatch(setNotification({
                 isOpen: true,
                 message: `Delete contact "${id}" success`,
                 status: 'success',
             }));
             await fetchContact();
-            handleCloseDialog();
         }
         catch (error) {
             console.log('delete contact ->', error);
@@ -85,8 +85,9 @@ const IndexPage = () => {
                 onClose={handleCloseDialog}
                 onDecline={handleCloseDialog}
                 onAccept={handleDeleteContact}
-                title="Do you want to delete contact ?"
-                contentText={`Contact's name "${contactInfo.name}" will be lost forever.`}
+                title={`Do you want to delete "${contactInfo.name}" ?`}
+                contentText={`If answer "Yes", contact's name "${contactInfo.name}" will lost forever.`}
+                disabled={isLoading}
             />
             <Table
                 headers={['ID', 'Name', 'Email', 'Contact', 'Action']}

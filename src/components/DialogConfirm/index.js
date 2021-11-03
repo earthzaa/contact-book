@@ -14,15 +14,29 @@ const DialogConfirm = (props) => {
         <Dialog
             open={props.isOpen}
             onClose={props.onClose}
-            maxWidth="lg"
+            aria-label="dialog confirm"
         >
             <DialogTitle>{props.title}</DialogTitle>
             <DialogContent>
                 <DialogContentText>{props.contentText}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={props.onDecline} variant="contained" color="primary">{props.declineText}</Button>
-                <Button onClick={props.onAccept} variant="outlined" color="primary">{props.acceptText}</Button>
+                <Button 
+                    onClick={props.onDecline} 
+                    variant="contained" 
+                    color="primary"
+                    disabled={props.disabled}
+                >
+                    {props.declineText}
+                </Button>
+                <Button 
+                    onClick={props.onAccept} 
+                    variant="outlined" 
+                    color="primary"
+                    disabled={props.disabled}
+                >
+                    {props.acceptText}
+                </Button>
             </DialogActions>
         </Dialog>
     );
@@ -37,6 +51,7 @@ DialogConfirm.propTypes = {
     onClose: PropTypes.func,
     onAccept: PropTypes.func,
     onDecline: PropTypes.func,
+    disabled: PropTypes.bool,
 };
 
 DialogConfirm.defaultProps = {
@@ -48,6 +63,7 @@ DialogConfirm.defaultProps = {
     onClose: () => { },
     onDecline: () => { },
     onAccept: () => { },
+    disabled: false,
 };
 
 export default DialogConfirm;
