@@ -1,7 +1,12 @@
 import React from 'react';
-import { ThemeProvider, Paper, CssBaseline, } from '@mui/material'
+import {
+    ThemeProvider,
+    Paper,
+    CssBaseline,
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import theme from '../constants/theme';
+import Notification from '../components/Notification';
 
 const AppContainer = (props) => {
     const { children } = props;
@@ -18,6 +23,7 @@ const AppContainer = (props) => {
                             </Paper>
                             : <React.Fragment>{children}</React.Fragment>
                     }
+                    <Notification />
                 </main>
             </ThemeProvider>
         </React.Fragment>

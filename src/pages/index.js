@@ -6,6 +6,7 @@ import useContact from '../util/useContact';
 import Table from '../components/Table';
 import DialogConfirm from '../components/DialogConfirm';
 import { setContactInfo, clearContactInfo, } from '../redux/action/contact';
+import { setNotification, } from '../redux/action/notification';
 
 const IndexPage = () => {
     const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const IndexPage = () => {
 
     React.useEffect(() => {
         fetchContact();
+        dispatch(setNotification({ isOpen: true, message: 'Alert', }))
     }, []);
 
     return (
