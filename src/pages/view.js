@@ -20,6 +20,7 @@ const ViewPage = () => {
                 view
             />
             <ContactCard
+                id={contact.id}
                 profilePic={contact.profilePic}
                 bgPic={contact.bgPic}
                 name={contact.name}

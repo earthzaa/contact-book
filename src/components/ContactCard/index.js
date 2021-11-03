@@ -40,6 +40,13 @@ const ContactCard = (props) => {
                 />
             </div>
             <div className="contact-card-info">
+                <TextInput 
+                    className="mb-2"
+                    label="ID"
+                    value={props.id}
+                    variant="filled"
+                    disabled
+                />
                 {INPUTS.slice(2).map(RenderInput)}
             </div>
         </div>
@@ -47,6 +54,7 @@ const ContactCard = (props) => {
 };
 
 ContactCard.propTypes = {
+    id: PropTypes.string,
     profilePic: PropTypes.string,
     bgPic: PropTypes.string,
     name: PropTypes.string,
@@ -57,6 +65,7 @@ ContactCard.propTypes = {
 };
 
 ContactCard.defaultProps = {
+    id: '',
     profilePic: '',
     bgPic: '',
     name: '',
