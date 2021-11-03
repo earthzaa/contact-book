@@ -6,6 +6,7 @@ import {
     MenuItem,
     FormControl,
     InputLabel,
+    FormHelperText,
 } from '@mui/material';
 
 const TextInput = (props) => {
@@ -18,6 +19,7 @@ const TextInput = (props) => {
                     onChange={props.onChange}
                     value={props.value}
                     variant={props.variant}
+                    autoComplete="none"
                 >
                     {
                         props.options.map((option, index) => (
@@ -30,11 +32,11 @@ const TextInput = (props) => {
                         ))
                     }
                 </Select>
+                <FormHelperText>{props.helpText}</FormHelperText>
             </FormControl>
-        )
+        );
     }
-
-    if (props.type === 'textarea') {
+    else if (props.type === 'textarea') {
         return (
             <TextField
                 className={props.className}
@@ -52,6 +54,8 @@ const TextInput = (props) => {
                 error={props.require && props.isError}
                 placeholder={props.placeholder}
                 disabled={props.disabled}
+                autoComplete="none"
+                autoCapitalize={props.autoCapitalize}
                 multiline
                 fullWidth
             />
@@ -74,6 +78,8 @@ const TextInput = (props) => {
                 placeholder={props.placeholder}
                 error={props.require && props.isError}
                 disabled={props.disabled}
+                autoComplete="none"
+                autoCapitalize={props.autoCapitalize}
                 fullWidth
             />
         );
@@ -97,7 +103,8 @@ TextInput.propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.string,
         label: PropTypes.string,
-    }))
+    })),
+    autoCapitalize: PropTypes.string,
 };
 
 TextInput.defaultProps = {
@@ -115,6 +122,7 @@ TextInput.defaultProps = {
     disabled: false,
     variant: 'filled',
     options: [],
+    autoCapitalize: 'off',
 };
 
 export default TextInput;
