@@ -5,6 +5,7 @@ import Form from '../components/Form';
 import { clearContactInfo, } from '../redux/action/contact';
 import useContact from '../util/useContact';
 import { INPUTS, } from '../constants/form';
+import { setNotification, } from '../redux/action/notification';
 
 const FormContactPage = () => {
     const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const FormContactPage = () => {
     const clearContact = () => dispatch(clearContactInfo());
 
     const goToIndexPage = () => {
-        clearContact();
-        setTimeout(() => window.location.href = '/', 500);
+        window.location.href = '/'
+        setTimeout(() => clearContact(), 500);
     };
 
     const handleSubmitContact = async (formContact = {}) => {
@@ -34,7 +35,13 @@ const FormContactPage = () => {
             };
 
             if (isCreate) await createData(submitForm);
-            else await updateData(formContact.id, submitForm);
+            else await updateData(formContact.id || '', submitForm);
+
+            dispatch(setNotification({
+                isOpen: true,
+                message: isCreate ? 'Create contact success' : 'Update contact success',
+                status: 'success',
+            }));
 
             goToIndexPage();
         }

@@ -6,6 +6,7 @@ import useContact from '../util/useContact';
 import Table from '../components/Table';
 import DialogConfirm from '../components/DialogConfirm';
 import { setContactInfo, clearContactInfo, } from '../redux/action/contact';
+import { setNotification, } from '../redux/action/notification';
 
 const IndexPage = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const IndexPage = () => {
 
     const handleCloseDialog = () => {
         setIsOpenDialog(false);
-        dispatch(clearContactInfo());
+        setTimeout(() => dispatch(clearContactInfo()), 500);
     };
 
     const goToFormPage = () => {
@@ -60,6 +61,11 @@ const IndexPage = () => {
             const { id } = contactInfo;
 
             await api.deleteData(id);
+            dispatch(setNotification({
+                isOpen: true,
+                message: `Delete contact "${id}" success`,
+                status: 'success',
+            }));
             await fetchContact();
             handleCloseDialog();
         }
@@ -80,7 +86,7 @@ const IndexPage = () => {
                 onDecline={handleCloseDialog}
                 onAccept={handleDeleteContact}
                 title="Do you want to delete contact ?"
-                contentText={`Contact "${contactInfo.id} (${contactInfo.name} )" will lost forever.`}
+                contentText={`Contact's name "${contactInfo.name}" will be lost forever.`}
             />
             <Table
                 headers={['id', 'name', 'email', 'contact', 'action']}
