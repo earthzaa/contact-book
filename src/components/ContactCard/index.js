@@ -17,7 +17,7 @@ const ContactCard = (props) => {
                 key={`${input.name}-${index}`}
                 label={input.label.split('*')[0]}
                 value={getGenderLabel(input.name, props[input.name])}
-                variant="standard"
+                variant="filled"
                 type={input.name === 'address' ? 'textarea' : 'text'}
                 disabled
             />
@@ -25,14 +25,19 @@ const ContactCard = (props) => {
     };
 
     return (
-        <div
-            className="contact-card-container"
-            style={{
-                backgroundImage: props.bgPic,
-            }}
-        >
+        <div className="contact-card-container">
+            <img
+                className="contact-card-bg"
+                src={props.bgPic}
+                alt="contact-background"
+                onError={(e) => e.target.src = 'image-not-found.png'}
+            />
             <div className="contact-card-image">
-                <img src={props.profilePic} alt="contact-profile" />
+                <img
+                    src={props.profilePic}
+                    alt="contact-profile"
+                    onError={(e) => e.target.src = 'image-not-found.png'}
+                />
             </div>
             <div className="contact-card-info">
                 {INPUTS.slice(2).map(RenderInput)}
