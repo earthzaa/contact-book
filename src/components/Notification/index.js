@@ -26,7 +26,7 @@ const Notification = () => {
             <Snackbar
                 open={notification.isOpen}
                 onClose={handleCloseNotification}
-                autoHideDuration={3000}
+                autoHideDuration={5000}
                 transitionDuration={500}
                 TransitionComponent={Grow}
                 arial-label="notification bar"
