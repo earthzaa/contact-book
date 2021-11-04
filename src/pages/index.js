@@ -94,6 +94,7 @@ const IndexPage = () => {
                 disabled={isLoading}
             />
             <Table
+                title="Contact Book"
                 headers={['ID', 'Name', 'Email', 'Contact', 'Action']}
                 queries={['id', 'name', 'email', 'contactNo']}
                 actionMenu={[

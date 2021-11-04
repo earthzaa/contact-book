@@ -23,7 +23,7 @@ const CustomTable = (props) => {
                     variant="h3" 
                     fontWeight="700"
                 >
-                    Contact People
+                    {props.title}
                 </Typography>
                 <IconButton 
                     onClick={props.onCreate} 
@@ -48,6 +48,7 @@ const CustomTable = (props) => {
 };
 
 CustomTable.propTypes = {
+    title: PropTypes.string,
     headers: PropTypes.array.isRequired,
     data: PropTypes.array.isRequired,
     queries: PropTypes.array.isRequired,
@@ -62,6 +63,7 @@ CustomTable.propTypes = {
 };
 
 CustomTable.defaultProps = {
+    title: '',
     headers: [],
     queries: [],
     data: [],
