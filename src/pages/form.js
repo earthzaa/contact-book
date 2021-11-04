@@ -32,6 +32,7 @@ const FormContactPage = () => {
                 contactNo: formContact.contactNo || '',
                 gender: formContact.gender || '',
                 address: formContact.address || '',
+                alias: formContact.alias || '',
             };
 
             if (isCreate) await createData(submitForm);

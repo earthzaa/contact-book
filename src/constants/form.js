@@ -35,6 +35,15 @@ export const INPUTS = [
         require: true,
     },
     {
+        label: 'Alias',
+        name: 'alias',
+        type: 'text',
+        helpText: 'optional',
+        placeholder: 'shake&bake',
+        maxLength: 20,
+        require: false,
+    },
+    {
         label: 'Email *',
         name: 'email',
         type: 'email',

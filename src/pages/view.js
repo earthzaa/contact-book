@@ -28,6 +28,7 @@ const ViewPage = () => {
                 contactNo={contact.contactNo}
                 gender={contact.gender}
                 address={contact.address}
+                alias={contact.alias}
             />
         </AppContainer>
     );

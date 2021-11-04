@@ -62,6 +62,7 @@ ContactCard.propTypes = {
     contactNo: PropTypes.string,
     address: PropTypes.string,
     gender: PropTypes.string,
+    alias: PropTypes.string,
 };
 
 ContactCard.defaultProps = {
@@ -73,6 +74,7 @@ ContactCard.defaultProps = {
     contactNo: '',
     address: '',
     gender: '',
+    alias: '',
 };
 
 export default ContactCard;
