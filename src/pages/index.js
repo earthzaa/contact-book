@@ -1,6 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector, } from 'react-redux';
-import { Edit, Delete, Visibility, } from '@mui/icons-material'
+import { 
+    Edit, 
+    Delete, 
+    Visibility, 
+    EmojiPeople,
+} from '@mui/icons-material'
 import AppContainer from '../containers/AppContainer';
 import useContact from '../util/useContact';
 import Table from '../components/Table';
@@ -39,6 +44,10 @@ const IndexPage = () => {
 
     const goToViewPage = () => {
         setTimeout(() => window.location.href = '/view', 500);
+    };
+
+    const goTo404Page = () => {
+        window.location.href = '/help';
     };
 
     const handleViewContact = (contact = {}) => {
@@ -100,7 +109,8 @@ const IndexPage = () => {
                 actionMenu={[
                     { icon: <Visibility fontSize="8px" />, text: 'view', onClick: handleViewContact, },
                     { icon: <Edit fontSize="8px" />, text: 'edit', onClick: handleEditContact, },
-                    { icon: <Delete fontSize="8px" />, text: 'delete', onClick: handleClickDeleteContact, }
+                    { icon: <Delete fontSize="8px" />, text: 'delete', onClick: handleClickDeleteContact, },
+                    { icon: <EmojiPeople fontSize="8px" />, text: 'help', onClick: goTo404Page, }
                 ]}
                 data={contacts}
                 isLoading={isLoading}
