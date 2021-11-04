@@ -12,20 +12,26 @@ import {
 const TextInput = (props) => {
     if (props.type === 'select') {
         return (
-            <FormControl className={`${props.className} mt-1 mb-4`} fullWidth>
+            <FormControl 
+                className={`${props.className} mt-1 mb-4`} 
+                fullWidth
+                arial-label="select input container"
+            >
                 <InputLabel>{props.label}</InputLabel>
                 <Select
                     name={props.name}
                     onChange={props.onChange}
                     value={props.value}
                     variant={props.variant}
-                    autoComplete="none"
+                    autoComplete="off"
+                    arial-label="select input"
                 >
                     {
                         props.options.map((option, index) => (
                             <MenuItem
                                 key={`${option.value}-${index}`}
                                 value={option.value}
+                                role="listitem"
                             >
                                 {option.label}
                             </MenuItem>
@@ -54,8 +60,9 @@ const TextInput = (props) => {
                 error={props.require && props.isError}
                 placeholder={props.placeholder}
                 disabled={props.disabled}
-                autoComplete="none"
+                autoComplete="off"
                 autoCapitalize={props.autoCapitalize}
+                aria-label="textarea"
                 multiline
                 fullWidth
             />
@@ -78,8 +85,9 @@ const TextInput = (props) => {
                 placeholder={props.placeholder}
                 error={props.require && props.isError}
                 disabled={props.disabled}
-                autoComplete="none"
+                autoComplete="off"
                 autoCapitalize={props.autoCapitalize}
+                aria-label="input"
                 fullWidth
             />
         );

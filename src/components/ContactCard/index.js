@@ -25,21 +25,21 @@ const ContactCard = (props) => {
     };
 
     return (
-        <div className="contact-card-container">
+        <div className="contact-card-container" role="group" aria-label="contact info">
             <img
                 className="contact-card-bg"
                 src={props.bgPic}
-                alt="contact-background"
+                alt="contact background"
                 onError={(e) => e.target.src = 'image-not-found.png'}
             />
-            <div className="contact-card-image">
+            <div className="contact-card-image" aria-label="profile image container">
                 <img
                     src={props.profilePic}
-                    alt="contact-profile"
+                    alt="contact profile"
                     onError={(e) => e.target.src = 'image-not-found.png'}
                 />
             </div>
-            <div className="contact-card-info">
+            <div className="contact-card-info" role="group" aria-label="info group">
                 <TextInput 
                     className="mb-2"
                     label="ID"

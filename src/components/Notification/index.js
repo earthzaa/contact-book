@@ -18,17 +18,23 @@ const Notification = () => {
     };
 
     return (
-        <Stack spacing={2} sx={{ width: '100%' }}>
+        <Stack 
+            spacing={2} 
+            sx={{ width: '100%' }}
+            aria-label="notification"
+        >
             <Snackbar
                 open={notification.isOpen}
                 onClose={handleCloseNotification}
                 autoHideDuration={3000}
                 transitionDuration={500}
                 TransitionComponent={Grow}
+                arial-label="notification bar"
             >
                 <Alert
                     security={notification.status}
                     onClose={handleCloseNotification}
+                    aria-label="notification content"
                 >
                     {notification.message}
                 </Alert>

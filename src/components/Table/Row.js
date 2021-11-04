@@ -7,6 +7,7 @@ const Row = (props) => {
         <TableRow 
             className={props.className} 
             onClick={props.onClick}
+            arial-label="row container"
         >
             {props.children}
         </TableRow>

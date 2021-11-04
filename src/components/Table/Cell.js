@@ -8,6 +8,7 @@ const Cell = (props) => {
             className={props.className}
             colSpan={props.colSpan}
             onClick={props.onClick}
+            aria-label="column container"
         >
             {props.children}
         </TableCell>

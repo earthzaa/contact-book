@@ -14,7 +14,7 @@ const Header = (props) => {
     };
 
     return (
-        <TableHead>
+        <TableHead aria-label="table header">
             <Row>
                 {props.data.map(RenderCell)}
             </Row>

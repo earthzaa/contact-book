@@ -27,6 +27,8 @@ const ActionMenu = (props) => {
             <MenuItem
                 key={`${item.text}-${index}`}
                 onClick={() => handleClickMenuItem(item.onClick)}
+                arial-label="action menu list"
+                role="listitem"
             >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText>{item.text}</ListItemText>
@@ -36,7 +38,11 @@ const ActionMenu = (props) => {
 
     return (
         <React.Fragment>
-            <IconButton onClick={handleSetAnchorEl}>
+            <IconButton 
+                title="Action Toggle"
+                onClick={handleSetAnchorEl} 
+                arial-label="action toggle"
+            >
                 <MoreVert />
             </IconButton>
             <Menu
@@ -44,6 +50,8 @@ const ActionMenu = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleCloseMenu}
                 TransitionComponent={Fade}
+                arial-label="action menu"
+                role="list"
             >
                 {RenderMenu()}
             </Menu>

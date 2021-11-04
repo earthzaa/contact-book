@@ -15,14 +15,12 @@ const AppContainer = (props) => {
         <React.Fragment>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <main 
-                    className={`container p-3 ${props.className}`} 
-                    aria-label="main container"
-                    role="main"
+                <main className={`container p-3 ${props.className}`} aria-label="page container"
                 >
                     {
                         props.page ?
-                            <Paper className="mt-5 p-4" aria-label="contact paper container">
+                            <Paper className="mt-5 p-4" aria-label="paper container"
+                            >
                                 {children}
                             </Paper>
                             : <React.Fragment>{children}</React.Fragment>

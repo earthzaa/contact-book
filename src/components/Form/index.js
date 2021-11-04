@@ -84,7 +84,7 @@ const CustomForm = (props) => {
     );
 
     return (
-        <form className="m-2">
+        <form className="m-2" aria-label="form contact">
             <FormAction
                 title={props.title}
                 submitText={props.submitText}
@@ -104,8 +104,8 @@ const CustomForm = (props) => {
                 name={bgPic.name}
                 onChange={handleChangeInput}
             />
-            <div className="contact-info-container">
-                <Paper className="contact-info">
+            <div className="contact-info-container" aria-label="form field container">
+                <Paper className="contact-info" arial-label="paper form">
                     <ImageUpload
                         id="input-upload-profile-img"
                         className="contact-profile-img"
@@ -116,7 +116,13 @@ const CustomForm = (props) => {
                         name={profilePic.name}
                         onChange={handleChangeInput}
                     />
-                    <div className="d-flex flex-wrap">{infoInputs.map(RenderInput)}</div>
+                    <div 
+                        className="d-flex flex-wrap"
+                        role="group"
+                        arial-label="input group"
+                    >
+                        {infoInputs.map(RenderInput)}
+                    </div>
                 </Paper>
             </div>
         </form>

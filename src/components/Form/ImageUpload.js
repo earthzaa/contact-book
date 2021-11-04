@@ -35,6 +35,9 @@ const ImageUpload = (props) => {
         <div
             className={`image-upload-container ${props.className}`}
             onClick={() => inputRef?.current?.click()}
+            role="button"
+            title="Upload Image Button"
+            aria-label="upload image button"
         >
             <input
                 id={props.id}
@@ -44,6 +47,9 @@ const ImageUpload = (props) => {
                 onChange={handleUploadImage}
                 accept="image/*"
                 disabled={props.disabled}
+                arial-label="input file ref"
+                placeholder="select file"
+                title="Input File Ref"
             />
             <img
                 className={`image-upload-src ${isLoading ? 'blur-on-loading' : ''}`}
@@ -53,16 +59,16 @@ const ImageUpload = (props) => {
                     height: props.height,
                 }}
                 onError={(e) => e.target.src = 'image-not-found.png'}
-                alt="src-not-found"
+                alt="src not found"
             />
             <Typography
                 className="image-upload-text"
-                variant="h6"
+                variant="overline"
                 color="CaptionText"
             >
                 {
                     isLoading ?
-                        <CircularProgress />
+                        <CircularProgress role="spinbutton" aria-label="loading button" />
                         :
                         props.label
                 }

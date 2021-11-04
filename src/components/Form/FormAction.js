@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 
 const FormAction = (props) => {
     return (
-        <div className="d-flex justify-content-between align-items-center mb-3">
+        <div 
+            className="d-flex justify-content-between align-items-center mb-3"
+            aria-label="form action"
+            role="toolbar"
+        >
             <Typography
                 variant="h3"
                 fontWeight="700"

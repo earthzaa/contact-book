@@ -15,12 +15,13 @@ const DialogConfirm = (props) => {
             open={props.isOpen}
             onClose={props.onClose}
             aria-label="dialog confirm"
+            role="dialog"
         >
             <DialogTitle>{props.title}</DialogTitle>
             <DialogContent>
                 <DialogContentText>{props.contentText}</DialogContentText>
             </DialogContent>
-            <DialogActions>
+            <DialogActions aria-label="dialog action">
                 <Button 
                     onClick={props.onDecline} 
                     variant="contained" 

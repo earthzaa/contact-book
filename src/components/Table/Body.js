@@ -55,7 +55,7 @@ const Body = (props) => {
     };
 
     return (
-        <TableBody>
+        <TableBody  arial-label="table body">
             {RenderBody()}
         </TableBody>
     );
