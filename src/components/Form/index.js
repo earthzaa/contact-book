@@ -15,36 +15,30 @@ const CustomForm = (props) => {
     const [formError, setFormError] = React.useState({});
     const [disabledAction, setDisabledAction] = React.useState(props.disabled);
 
-    const handleErrorForm = React.useCallback(
-        (name = '', value = '', type = 'text') => {
-            let isError = false;
+    const handleErrorForm = (name = '', value = '', type = 'text') => {
+        let isError = false;
 
-            if (type === 'email') isError = !EMAIL.test(value);
-            else isError = !Boolean(value);
+        if (type === 'email') isError = !EMAIL.test(value);
+        else isError = !Boolean(value);
 
-            setFormError((prevState) => ({
-                ...prevState,
-                [name]: isError,
-            }));
-        },
-        [formError]
-    );
+        setFormError((prevState) => ({
+            ...prevState,
+            [name]: isError,
+        }));
+    };
 
-    const handleChangeInput = React.useCallback(
-        (event = {}) => {
-            const { name, type, } = event.target;
-            let { value, } = event.target;
+    const handleChangeInput = (event = {}) => {
+        const { name, type, } = event.target;
+        let { value, } = event.target;
 
-            if (type === 'tel') value = value.toUpperCase();
+        if (type === 'tel') value = value.toUpperCase();
 
-            handleErrorForm(name, value, type);
-            setForm((prevState) => ({
-                ...prevState,
-                [name]: value,
-            }));
-        },
-        [form]
-    );
+        handleErrorForm(name, value, type);
+        setForm((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = () => props.onSubmit(form);
 
@@ -65,7 +59,7 @@ const CustomForm = (props) => {
 
             handleErrorForm(name, props.initData[name], type);
         });
-    }, [props.initData]);
+    }, []);
 
     React.useEffect(() => {
         validateFormToSubmit();
@@ -122,7 +116,7 @@ const CustomForm = (props) => {
                         name={profilePic.name}
                         onChange={handleChangeInput}
                     />
-                    <div
+                    <div 
                         className="d-flex flex-wrap"
                         role="group"
                         arial-label="input group"

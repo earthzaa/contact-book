@@ -43,7 +43,7 @@ const FormContactPage = () => {
                 status: 'success',
             }));
 
-            setTimeout(goToIndexPage, 1500);
+            goToIndexPage();
         }
         catch (error) {
             console.log('create contact ->', error);

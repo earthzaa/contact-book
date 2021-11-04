@@ -56,9 +56,6 @@ const IndexPage = () => {
         goToFormPage();
     };
 
-    const substringText = (text = '', maxLength = 0) =>
-        text.length >= maxLength ? text.substring(0, maxLength).concat('...') : text;
-
     const handleDeleteContact = async () => {
         try {
             const { id } = contactInfo;
@@ -67,7 +64,7 @@ const IndexPage = () => {
             handleCloseDialog();
             dispatch(setNotification({
                 isOpen: true,
-                message: `Delete "${substringText(contactInfo.name, 15)}" success`,
+                message: `Delete contact "${id}" success`,
                 status: 'success',
             }));
             await fetchContact();
@@ -88,8 +85,8 @@ const IndexPage = () => {
                 onClose={handleCloseDialog}
                 onDecline={handleCloseDialog}
                 onAccept={handleDeleteContact}
-                title={`Do you want to delete "${substringText(contactInfo.name, 15)}" ?`}
-                contentText={`If answer "Yes", contact's name "${substringText(contactInfo.name, 15)}" will lost forever.`}
+                title={`Do you want to delete "${contactInfo.name}" ?`}
+                contentText={`If answer "Yes", contact's name "${contactInfo.name}" will lost forever.`}
                 disabled={isLoading}
             />
             <Table
