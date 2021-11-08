@@ -13,7 +13,7 @@ const TextInput = (props) => {
     if (props.type === 'select') {
         return (
             <FormControl 
-                className={`${props.className} mt-1 mb-4`} 
+                className={`${props.className} mt-1 mb-3`} 
                 fullWidth
                 arial-label="select input container"
             >
